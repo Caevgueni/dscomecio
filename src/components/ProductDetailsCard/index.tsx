@@ -1,6 +1,5 @@
 
 import './styles.css';
-import computerImg from '../../assets/computer.png' 
 import ProductCategory from '../ProductCategory';
 import type { ProductDTO } from '../../models/poroduct';
 
@@ -22,10 +21,13 @@ export default function ProductDetailsCard({product}: Props){
              {product.description}
             </p>
             <div className="dsc-category-container">
+             {
+              product.categories.map(item => (
+                <ProductCategory key={item.id} name={item.name} />
+              ))
+             }
 
-              
-              <ProductCategory />
-               <ProductCategory />
+             
                 
             </div>
           </div>

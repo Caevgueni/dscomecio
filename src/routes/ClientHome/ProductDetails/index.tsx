@@ -1,10 +1,10 @@
+import ButtonInverse from "../../../components/HeaderClient/ButtonInverse";
+import ButtonPrimary from "../../../components/HeaderClient/ButtonPrimary";
+import ProductDetailsCard from "../../../components/ProductDetailsCard";
+import type { ProductDTO } from "../../../models/poroduct";
 import "./styles.css";
 
-import HeaderClient from "../../components/HeaderClient";
-import ButtonInverse from "../../components/HeaderClient/ButtonInverse";
-import ButtonPrimary from "../../components/HeaderClient/ButtonPrimary";
-import ProductDetailsCard from "../../components/ProductDetailsCard";
-import type { ProductDTO } from "../../models/poroduct";
+
 
 
 const product: ProductDTO = {
@@ -31,7 +31,7 @@ const product: ProductDTO = {
 export default function ProductDetails() {
   return (
     <>
-      <HeaderClient />
+     
       <main>
         <section id="product-details-section" className="dsc-container">
           <ProductDetailsCard product = {product} />

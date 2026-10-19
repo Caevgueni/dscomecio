@@ -1,10 +1,10 @@
+import ButtonNextPage from "../../../components/ButtonNextPage";
+import Catalogcard from "../../../components/CatalogCard";
+import Searchbar from "../../../components/SearchBar";
+import type { ProductDTO } from "../../../models/poroduct";
 import "./stales.css";
 
-import HeaderClient from "../../components/HeaderClient";
-import Searchbar from "../../components/SearchBar";
-import Catalogcard from "../../components/CatalogCard";
-import ButtonNextPage from "../../components/ButtonNextPage";
-import type { ProductDTO } from "../../models/poroduct";
+
 
 
 const product: ProductDTO = {
@@ -31,7 +31,7 @@ const product: ProductDTO = {
 export default function Catalog() {
   return (
     <>
-      <HeaderClient />
+      
       <main>
         <section id="catalog-section" className="dsc-container">
           <Searchbar />

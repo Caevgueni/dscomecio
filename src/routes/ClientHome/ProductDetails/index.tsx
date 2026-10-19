@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ButtonInverse from "../../../components/HeaderClient/ButtonInverse";
 import ButtonPrimary from "../../../components/HeaderClient/ButtonPrimary";
 import ProductDetailsCard from "../../../components/ProductDetailsCard";
@@ -31,7 +31,10 @@ const product = productService.findById(Number(params.productId));
           <div className="dsc-btn-page-container">
             <ButtonPrimary />
 
-            <ButtonInverse />
+             <Link  to={"/"}>
+             <ButtonInverse />
+             </Link>
+           
           </div>
         </section>
       </main>

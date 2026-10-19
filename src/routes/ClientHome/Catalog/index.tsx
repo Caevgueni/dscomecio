@@ -2,7 +2,7 @@ import ButtonNextPage from "../../../components/ButtonNextPage";
 import Catalogcard from "../../../components/CatalogCard";
 import Searchbar from "../../../components/SearchBar";
 import * as productService from '../../../Services/product-service'
-import "./stales.css";
+import "./styles.css";
 
 
 export default function Catalog() {

@@ -3,6 +3,7 @@ import './styles.css';
 import ProductCategory from '../ProductCategory';
 import type { ProductDTO } from '../../models/poroduct';
 
+
 type Props = {
   product: ProductDTO;
 }
@@ -10,6 +11,9 @@ type Props = {
 export default function ProductDetailsCard({product}: Props){
 
     return (
+
+      
+        
         <div className="dsc-card dsc-mb20">
           <div className="dsc-product-details-top dsc-line-bottom">
             <img src={product.imgUrl} alt="Computador" />
@@ -32,5 +36,6 @@ export default function ProductDetailsCard({product}: Props){
             </div>
           </div>
         </div>
-    )
+       
+    );
 }

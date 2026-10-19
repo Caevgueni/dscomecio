@@ -1,6 +1,7 @@
 import './styles.css';
 
 import type { ProductDTO } from '../../models/poroduct';
+import { Link } from 'react-router-dom';
 
 type Props = {
   product : ProductDTO;
@@ -9,6 +10,8 @@ type Props = {
 export default function Catalogcard({product}: Props){
 
     return(
+<>
+      <Link to={`/product-details/${product.id}`}>
         <div className="dsc-card">
               <div className="dsc-catalog-card-top dsc-line-bottom">
                 <img src={product.imgUrl} alt="Computer" />
@@ -18,5 +21,7 @@ export default function Catalogcard({product}: Props){
                 <h4>{product.name}</h4>
               </div>
             </div>
+            </Link>
+            </>
     );
 }

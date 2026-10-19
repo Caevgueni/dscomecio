@@ -15,7 +15,7 @@ return(
       <Route path="/" element={<ClientHome />}>
       <Route index element={<Catalog />} />
          <Route path="catalog" element={<Catalog />} />
-         <Route path="product-details" element={<ProductDetails />} />
+         <Route path="product-details/:productId" element={<ProductDetails />} />
       
       </Route>
     </Routes>

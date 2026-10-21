@@ -4,16 +4,15 @@ import Catalogcard from "../../../components/CatalogCard";
 import Searchbar from "../../../components/SearchBar";
 import "./styles.css";
 import type { ProductDTO } from "../../../models/poroduct";
-import axios from "axios";
 
+import * as productService from '../../../Services/product-service'
 
 export default function Catalog() {
 
   const [products, setProducts] = useState<ProductDTO[]>([]);
 
   useEffect(() => {
-  axios
-    .get("http://localhost:8089/products?size=12")
+  productService.findAll()
     .then(response => {
       console.log("Resposta completa:", response);
       console.log("Dados recebidos:", response.data);

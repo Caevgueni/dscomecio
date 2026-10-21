@@ -4,9 +4,9 @@ import ButtonPrimary from "../../../components/HeaderClient/ButtonPrimary";
 import ProductDetailsCard from "../../../components/ProductDetailsCard";
 import "./styles.css";
 import { useEffect, useState } from "react";
-import axios from "axios";
-import type { ProductDTO } from "../../../models/poroduct";
 
+import type { ProductDTO } from "../../../models/poroduct";
+import * as productService from '../../../Services/product-service'
 
 export default function ProductDetails() {
 
@@ -15,7 +15,7 @@ export default function ProductDetails() {
   
 useEffect(() => {
 
-    axios.get(`http://localhost:8089/products/${params.productId}`)
+   productService.findById(Number(params.productId))
     .then(response => {
       console.log(response.data);
       setProduct(response.data);

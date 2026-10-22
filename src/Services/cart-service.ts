@@ -8,3 +8,7 @@ export function saveCart(cart: OrderDTO){
     cartResository.save(cart);
 
 }
+
+export function getCart() : OrderDTO{
+   return  cartResository.get();
+}

@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 
 import type { ProductDTO } from "../../../models/poroduct";
 import * as productService from '../../../Services/product-service'
+import * as cartService from '../../../Services/cart-service'
 
 export default function ProductDetails() {
 
@@ -27,6 +28,15 @@ useEffect(() => {
    
   }, []);
 
+  function handleBuyClick() {
+
+    if(product){
+       cartService.addProduct(product)
+       navigate("/cart");
+    }
+   
+  }
+
   return (
     
      
@@ -38,7 +48,11 @@ useEffect(() => {
          }
          
           <div className="dsc-btn-page-container">
-            <ButtonPrimary />
+
+            <div onClick={handleBuyClick}>
+              <ButtonPrimary />
+            </div>
+            
 
              <Link  to={"/"}>
              <ButtonInverse />

@@ -2,6 +2,7 @@ import "./styles.css";
 import * as cartService from '../../../Services/cart-service'
 import {  useState } from "react";
 import { OrderDTO} from "../../../models/order";
+import { Link } from "react-router-dom";
 
 
 export default function Cart() {
@@ -11,7 +12,15 @@ export default function Cart() {
   return (
     <main>
       <section id="cart-container-section" className="dsc-container">
-        <div className="dsc-card dsc-mb20">
+      {
+        cart.items.length === 0
+        ? (
+          <div className="dsc-mb20 dsc-mt20">
+            <h2> Seu carinho está  vazio</h2>
+          </div>
+        )
+        : (
+           <div className="dsc-card dsc-mb20">
 
           {
           cart.items.map((item) => (
@@ -27,17 +36,30 @@ export default function Cart() {
                   </div>
                 </div>
               </div>
-              <div className="dsc-cart-item-right">R$ {(item.price*item.quantity).toFixed(2)}</div>
+              <div className="dsc-cart-item-right">
+                R$ {item.subTotal.toFixed(2)}</div>
             </div>
           ))}
 
           <div className="dsc-cart-total-container">
-           <h3> R$ 15000,00 </h3> 
+           <h3> R$ {cart.total.toFixed(2)} </h3> 
           </div>
         </div>
+
+        )
+      }
+
+
+       
         <div className="dsc-btn-page-container">
           <div className="dsc-btn dsc-btn-blue">Finalizar pedido</div>
-          <div className="dsc-btn dsc-btn-white">Continuar comprando</div>
+
+          <Link to={"/catalog"}>
+           <div  className="dsc-btn dsc-btn-white">
+            Continuar comprando
+            </div>
+          </Link>
+         
         </div>
       </section>
     </main>

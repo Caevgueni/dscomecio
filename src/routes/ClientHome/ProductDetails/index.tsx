@@ -3,16 +3,22 @@ import ButtonInverse from "../../../components/HeaderClient/ButtonInverse";
 import ButtonPrimary from "../../../components/HeaderClient/ButtonPrimary";
 import ProductDetailsCard from "../../../components/ProductDetailsCard";
 import "./styles.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import type { ProductDTO } from "../../../models/poroduct";
 import * as productService from '../../../Services/product-service'
 import * as cartService from '../../../Services/cart-service'
+import { ContextCartCount } from "../../../utils/context-cart";
 
 export default function ProductDetails() {
 
   const params = useParams();
   const navigate = useNavigate();
+  const {setContextCartCount} = useContext(ContextCartCount);
+
+
+
+
   const [product, setProduct] = useState<ProductDTO>();
   
 useEffect(() => {
@@ -32,6 +38,7 @@ useEffect(() => {
 
     if(product){
        cartService.addProduct(product)
+       setContextCartCount(cartService.getCart().items.length);
        navigate("/cart");
     }
    

@@ -7,24 +7,34 @@ import type { ProductDTO } from "../../../models/poroduct";
 
 import * as productService from '../../../Services/product-service'
 
+type queryParams= {
+  page: number;
+  name: string;
+}
+
 export default function Catalog() {
 
   const [products, setProducts] = useState<ProductDTO[]>([]);
 
-  const [productName, setProductName] = useState("");
+  const [queryParams, setQueryParams] = useState<queryParams>({
+
+    page : 0,
+    name: ""
+  }
+  );
 
   useEffect(() => {
-  productService.findPageRequest(0,productName)
+  productService.findPageRequest(queryParams.page,queryParams.name)
     .then(response => {
       setProducts(response.data.content);
     })
     .catch(error => {
       console.error("Erro no pedido:", error);
     });
-}, [productName]);
+}, [queryParams]);
 
 function hendleSearch(serchText: string){
-  setProductName(serchText);
+  setQueryParams({...queryParams, name: serchText});
 }
 
   return (

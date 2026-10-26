@@ -5,54 +5,54 @@ import Searchbar from "../../../components/SearchBar";
 import "./styles.css";
 import type { ProductDTO } from "../../../models/poroduct";
 
-import * as productService from '../../../Services/product-service'
+import * as productService from "../../../Services/product-service";
 
-type queryParams= {
+type queryParams = {
   page: number;
   name: string;
-}
+};
 
 export default function Catalog() {
-
   const [products, setProducts] = useState<ProductDTO[]>([]);
 
   const [queryParams, setQueryParams] = useState<queryParams>({
-
-    page : 0,
-    name: ""
-  }
-  );
+    page: 0,
+    name: "",
+  });
 
   useEffect(() => {
-  productService.findPageRequest(queryParams.page,queryParams.name)
-    .then(response => {
-      setProducts(response.data.content);
-    })
-    .catch(error => {
-      console.error("Erro no pedido:", error);
-    });
-}, [queryParams]);
+    productService
+      .findPageRequest(queryParams.page, queryParams.name)
+      .then((response) => {
+        const nextPage = response.data.content;
+        setProducts(products.concat(nextPage));
+      })
+      .catch((error) => {
+        console.error("Erro no pedido:", error);
+      });
+  }, [queryParams]);
 
-function hendleSearch(serchText: string){
-  setQueryParams({...queryParams, name: serchText});
-}
+  function hendleSearch(serchText: string) {
+    setProducts([]);
+    setQueryParams({ ...queryParams,page: 0, name: serchText });
+  }
+ function handlenextpageClick(searchTet: string)  {
+  setQueryParams({...queryParams, page: queryParams.page + 1})
 
+ }
   return (
     <>
-      
       <main>
         <section id="catalog-section" className="dsc-container">
           <Searchbar onSearch={hendleSearch} />
           <div className="dsc-catalog-cards dsc-mb20 dsc-mt20">
-
-          {
-            products.map(
-              product =>   <Catalogcard key={product.id} product = {product} />)
-          }
-
+            {products.map((product) => (
+              <Catalogcard key={product.id} product={product} />
+            ))}
           </div>
-
-         <ButtonNextPage />
+          <div onClick={handlenextpageClick}>
+            <ButtonNextPage />
+          </div>
         </section>
       </main>
     </>

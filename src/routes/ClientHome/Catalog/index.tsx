@@ -13,6 +13,9 @@ type queryParams = {
 };
 
 export default function Catalog() {
+
+  const [isLastPage, setIsLastPage] = useState(false);
+
   const [products, setProducts] = useState<ProductDTO[]>([]);
 
   const [queryParams, setQueryParams] = useState<queryParams>({
@@ -21,22 +24,20 @@ export default function Catalog() {
   });
 
   useEffect(() => {
-    productService
-      .findPageRequest(queryParams.page, queryParams.name)
-      .then((response) => {
+    productService.findPageRequest(queryParams.page, queryParams.name)
+      .then(response => {
         const nextPage = response.data.content;
         setProducts(products.concat(nextPage));
-      })
-      .catch((error) => {
-        console.error("Erro no pedido:", error);
+        setIsLastPage(response.data.last);
       });
+     
   }, [queryParams]);
 
   function hendleSearch(serchText: string) {
     setProducts([]);
     setQueryParams({ ...queryParams,page: 0, name: serchText });
   }
- function handlenextpageClick(searchTet: string)  {
+ function handleNextpageClick(searchTet: string)  {
   setQueryParams({...queryParams, page: queryParams.page + 1})
 
  }
@@ -50,9 +51,13 @@ export default function Catalog() {
               <Catalogcard key={product.id} product={product} />
             ))}
           </div>
-          <div onClick={handlenextpageClick}>
+        {  
+            !isLastPage &&
+            <div onClick={handleNextpageClick}>
             <ButtonNextPage />
           </div>
+
+        }
         </section>
       </main>
     </>

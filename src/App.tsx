@@ -20,6 +20,7 @@ import { ContextToken } from "./utils/context-token";
 
 import * as authService from "./Services/auth-service";
 import * as cartService from "./Services/cart-service";
+import Confirmation from "./routes/ClientHome/Confirmation";
 
 export default function App() {
   const [contextCartCount, setContextCartCount] = useState<number>(0);
@@ -49,16 +50,13 @@ export default function App() {
             <Route path="/" element={<ClientHome />}>
               <Route index element={<Catalog />} />
               <Route path="catalog" element={<Catalog />} />
-              <Route
-                path="product-details/:productId"
-                element={<ProductDetails />}
-              />
+              <Route path="product-details/:productId" element={<ProductDetails />}/>
               <Route path="cart" element={<Cart />} />
               <Route path="login" element={<Login />} />
+              <Route path="confirmation/:orderId" element={<Confirmation />}/>
+
             </Route>
-            <Route
-              path="/admin/"
-              element={
+            <Route path="/admin/" element={
                 <PrivateRoute roles={["ROLE_ADMIN"]}>
                   <Admin />
                 </PrivateRoute>

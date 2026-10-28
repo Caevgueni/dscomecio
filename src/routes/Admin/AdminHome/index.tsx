@@ -3,9 +3,11 @@ import "./styles.css";
 import { type UserDTO } from "../../../models/user";
 import * as userService from "../../../Services/user-service";
 
+
 export default function AdminHome() {
 
     const [user, setUser] = useState<UserDTO>()
+   
 
     useEffect(() =>{
 
@@ -14,10 +16,7 @@ export default function AdminHome() {
             setUser(response.data);
             console.log(response.data);
         })
-        .catch(error => {
-            console.log("error", error);
-        })
-
+        
     }, [])
 
   return (

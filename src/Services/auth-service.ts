@@ -18,10 +18,12 @@ export function loginRequest(loginData: CredentialsDTO) {
   });
 
   const config: AxiosProxyConfig = {
-    method: "POST",
+    
+    method:"POST",
     url: "/oauth/token",
     data: requestBody,
     headers: headers,
+   
   };
 
   return requestBackend(config);

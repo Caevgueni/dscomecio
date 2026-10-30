@@ -6,6 +6,7 @@ import * as productService from "../../../Services/product-service";
 import type { ProductDTO } from "../../../models/poroduct";
 import Searchbar from "../../../components/SearchBar";
 import ButtonNextPage from "../../../components/ButtonNextPage";
+import DialogInfo from "../../../components/DialogInfo";
 
 type queryParams = {
   page: number;
@@ -13,6 +14,12 @@ type queryParams = {
 };
 
 export default function ProductListing() {
+
+    const [dialogInfoDta,setDialogInfoDta] = useState({
+        visible: false,
+        message: "Operação com Sucesso!"
+    })
+
   const [isLastPage, setIsLastPage] = useState(false);
 
   const [products, setProducts] = useState<ProductDTO[]>([]);
@@ -41,6 +48,13 @@ export default function ProductListing() {
     setQueryParams({ ...queryParams, page: queryParams.page + 1 });
   }
 
+  function handleDialogInfoClose() {
+    setDialogInfoDta({...dialogInfoDta, visible: false});
+  }
+  function handleDeleteClick(){
+        setDialogInfoDta({...dialogInfoDta, visible: true});
+
+  }
   return (
     <main>
       <section id="product-listing-section" className="dsc-container">
@@ -71,7 +85,7 @@ export default function ProductListing() {
                 <td className="dsc-tb768">R$ {product.price.toFixed(2)}</td>
                 <td className="dsc-txt-left">{product.name}</td>
                 <td>  <img className="dsc-product-listing-btn" src={editIcon} alt="Editar" /></td>
-                <td> <img className="dsc-product-listing-btn" src={deleteIcon}  alt="Deletar"  />
+                <td> <img onClick={handleDeleteClick} className="dsc-product-listing-btn" src={deleteIcon}  alt="Deletar"  />
                 </td>
               </tr>
             ))}
@@ -80,10 +94,16 @@ export default function ProductListing() {
 
         {!isLastPage && (
           <div onClick={handleNextpageClick}>
-            <ButtonNextPage />
+            <ButtonNextPage text="Carregar mais" />
           </div>
         )}
       </section>
+      {
+        dialogInfoDta.visible &&
+      <DialogInfo
+             message={dialogInfoDta.message}
+              onDialogClose={handleDialogInfoClose} /> 
+      }
     </main>
   );
 }

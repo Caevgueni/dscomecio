@@ -1,6 +1,6 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import ButtonInverse from "../../../components/HeaderClient/ButtonInverse";
-import ButtonPrimary from "../../../components/HeaderClient/ButtonPrimary";
+import ButtonInverse from "../../../components/ButtonInverse";
+import ButtonPrimary from "../../../components/ButtonPrimary";
 import ProductDetailsCard from "../../../components/ProductDetailsCard";
 import "./styles.css";
 import { useContext, useEffect, useState } from "react";
@@ -57,12 +57,12 @@ useEffect(() => {
           <div className="dsc-btn-page-container">
 
             <div onClick={handleBuyClick}>
-              <ButtonPrimary />
+              <ButtonPrimary text="Comprar" />
             </div>
             
 
              <Link  to={"/"}>
-             <ButtonInverse />
+             <ButtonInverse text="Início" />
              </Link>
            
           </div>

@@ -249,8 +249,11 @@ nav a {
   color: var(--dsc-color-font-placeholder);
 }
 
-.dsc-form-control[data-invalid="true"] {
+.dsc-form-control[data-darty="true"][data-invalid="true"] {
 border: 1px solid var(--dsc-color-error);
+}
+.dsc-form-control[data-darty="true"][data-invalid="true"] ~ div {
+display: unset;
 }
 
 .dsc-form-error {
@@ -259,9 +262,7 @@ border: 1px solid var(--dsc-color-error);
   padding-left: 4px;
   display: none;
 }
-.dsc-form-control[data-invalid="true"] ~ div {
-display: unset;
-}
+
 .dsc-select:invalid {
   color: var(--dsc-color-font-placeholder);
 }

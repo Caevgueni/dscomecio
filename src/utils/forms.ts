@@ -40,3 +40,12 @@ export function toDirty(inputs: any, name: string){
     return {...inputs, [name]: {...inputs[name], dirty: "true"}}
 
 }
+export function updateAndValidate(inputs: any, name :string, newValue: any){
+    const dataUpdate= update(inputs, name, newValue)
+    return validate(dataUpdate, name);
+}
+
+export function dartyAndValidate(inputs: any, name :string){
+    const dataDarty= toDirty(inputs, name)
+    return validate(dataDarty, name);
+}

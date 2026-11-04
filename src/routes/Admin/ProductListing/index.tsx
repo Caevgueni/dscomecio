@@ -18,7 +18,7 @@ type queryParams = {
 
 export default function ProductListing() {
 
-  const navihate= useNavigate();
+  const navigate= useNavigate();
 
     const [dialogInfoDta,setDialogInfoDta] = useState({
         visible: false,
@@ -52,7 +52,7 @@ export default function ProductListing() {
 
   function handleNewproductsClck(){
 
-    navihate("/admin/products/create")
+    navigate("/admin/products/create")
 
   }
 
@@ -68,6 +68,11 @@ export default function ProductListing() {
   function handleDialogInfoClose() {
     setDialogInfoDta({...dialogInfoDta, visible: false});
   }
+
+  function handleUpdateClick(productId: number){
+    navigate(`/admin/products/${productId}`);
+  }
+
   function handleDeleteClick(prductId: number){
         setDialogConfirmationData({...dialogConfirmationData, id: prductId, visible: true});
 
@@ -126,7 +131,7 @@ export default function ProductListing() {
                 <td> <img className="dsc-product-listing-image"  src={product.imgUrl} alt={product.name} /> </td>
                 <td className="dsc-tb768">R$ {product.price.toFixed(2)}</td>
                 <td className="dsc-txt-left">{product.name}</td>
-                <td>  <img className="dsc-product-listing-btn" src={editIcon} alt="Editar" /></td>
+                <td>  <img onClick={() => handleUpdateClick(product.id)} className="dsc-product-listing-btn" src={editIcon} alt="Editar" /></td>
                 <td> <img onClick={() => handleDeleteClick(product.id)} className="dsc-product-listing-btn" src={deleteIcon}  alt="Deletar"  />
                 </td>
               </tr>

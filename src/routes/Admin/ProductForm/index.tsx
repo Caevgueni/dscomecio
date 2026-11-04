@@ -8,6 +8,7 @@ import FormTextArea from "../../../components/FormTextArea";
 import type { CategoryDTO } from "../../../models/category";
 import * as categoryService from "../../../Services/category-service.ts";
 import FormSelect from "../../../components/FormSelect/index.tsx";
+import { selectStyles } from "../../../utils/select.ts";
 
 export default function ProductForm() {
 
@@ -34,7 +35,7 @@ export default function ProductForm() {
       id: "price",
       name: "price",
       type: "number",
-      placeholder: "Priço",
+      placeholder: "Preço",
       validation: function(value: any){
         return Number(value) > 0;
       },
@@ -144,9 +145,10 @@ export default function ProductForm() {
 
               <div>
 
-          <FormSelect 
-           className="dsc-form-control"
-          {...formData.categories}
+          <FormSelect
+           {...formData.categories}
+           className="dsc-form-control dsc-form-select-conteiner"
+          styles={selectStyles}
              options={categories} 
              onChange = {(obj: any) => {
               const newFormData = forms.updateAndValidate(formData, "categories", obj);

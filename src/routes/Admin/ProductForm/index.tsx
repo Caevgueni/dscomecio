@@ -5,8 +5,13 @@ import FormInput from "../../../components/FormInput";
 import * as forms from "../../../utils/forms";
 import * as productService from "../../../Services/product-service";
 import FormTextArea from "../../../components/FormTextArea";
+import Select from "react-select";
+import type { CategoryDTO } from "../../../models/category";
+import * as categoryService from "../../../Services/category-service.ts";
 
 export default function ProductForm() {
+
+  const [categories, setcategories] = useState<CategoryDTO[]>([]);
 
   const params = useParams();
 
@@ -55,6 +60,17 @@ export default function ProductForm() {
     }
   });
 
+
+
+  useEffect(() => {
+
+    categoryService.findAllRequest()
+      .then(response => {
+        setcategories(response.data);
+      });
+
+  },[]);
+
   useEffect(() => {
 
   
@@ -80,6 +96,7 @@ export default function ProductForm() {
    
     setFormData(forms.dartyAndValidate(formData, name));
   }
+
 
   return (
     <main>
@@ -113,6 +130,18 @@ export default function ProductForm() {
                   onTurnDirty={handleTurnDirty}
                   onChange={handleInputChange}
                 />
+              </div>
+
+              <div>
+
+          <Select 
+             options={categories} 
+             isMulti
+             getOptionLabel={(obj) => obj.name}
+             getOptionValue={(obj) => String(obj.id)}
+
+
+          />
               </div>
 
                <div>

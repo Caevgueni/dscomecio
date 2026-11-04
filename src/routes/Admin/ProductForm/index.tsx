@@ -124,7 +124,12 @@ export default function ProductForm() {
   if(isEditing){
     requestBody.id = params.productId;
   }
-  productService.updateRquest(requestBody)
+
+  const request = isEditing
+  ?  productService.updateRquest(requestBody)
+  :  productService.insertRquest(requestBody)
+
+  request
     .then(() => {
       navigate("/admin/products")
     })

@@ -263,6 +263,20 @@ display: unset;
   display: none;
 }
 
+.dsc-form-global-error{
+
+  border: solid 1px var(--dsc-color-error);
+  border-radius: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 5px 10px;
+  font-size: 12px;
+  color: var(--dsc-color-error);
+
+
+}
+
 .dsc-form-select-conteiner{
   padding: unset;
   height: unset;

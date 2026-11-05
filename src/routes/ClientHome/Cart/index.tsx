@@ -76,12 +76,12 @@ export default function Cart() {
                 </div>
               </div>
               <div className="dsc-cart-item-right">
-                R$ {item.subTotal.toFixed(2)}</div>
+                €{item.subTotal.toFixed(2)}</div>
             </div>
           ))}
 
           <div className="dsc-cart-total-container">
-           <h3> R$ {cart.total.toFixed(2)} </h3> 
+           <h3> €{cart.total.toFixed(2)} </h3> 
           </div>
         </div>
 

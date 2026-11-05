@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 import * as authService from "../../Services/auth-service"
-import type { JSX } from "react/jsx-runtime";
+import type { JSX } from "react";
 import type { RoleEnum } from "../../models/auth";
 
 type Props = {

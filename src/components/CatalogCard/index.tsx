@@ -17,7 +17,7 @@ export default function Catalogcard({product}: Props){
                 <img src={product.imgUrl} alt="Computer" />
               </div>
               <div className="dsc-catalog-card-bottom">
-                <h3>R$ {product.price}</h3>
+                <h3>€{product.price}</h3>
                 <h4>{product.name}</h4>
               </div>
             </div>

@@ -28,7 +28,7 @@ useEffect(() => {
       console.log(response.data);
       setProduct(response.data);
     })
-    .catch(error => {
+    .catch(() => {
       navigate("/");
     });
    

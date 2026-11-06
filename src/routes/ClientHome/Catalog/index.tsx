@@ -41,7 +41,7 @@ export default function Catalog() {
     setProducts([]);
     setQueryParams({ ...queryParams,page: 0, name: serchText });
   }
- function handleNextpageClick(searchTet: string)  {
+ function handleNextpageClick()  {
   setQueryParams({...queryParams, page: queryParams.page + 1})
 
  }

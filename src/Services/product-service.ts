@@ -3,7 +3,7 @@ import axios, { type AxiosRequestConfig } from "axios";
 import { requestBackend } from "../utils/request";
 import type { ProductDTO } from "../models/poroduct";
 
-export function findPageRequest(page:number, name: string, size: 12, sort:"name"){
+export function findPageRequest(page:number, name: string, size: number = 12, sort: string = "name"){
 
     const config: AxiosRequestConfig = {
        method: "GET",

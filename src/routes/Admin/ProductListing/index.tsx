@@ -61,7 +61,7 @@ export default function ProductListing() {
     setQueryParams({ ...queryParams, page: 0, name: serchText });
   }
 
-  function handleNextpageClick(searchTet: string) {
+  function handleNextpageClick() {
     setQueryParams({ ...queryParams, page: queryParams.page + 1 });
   }
 
@@ -129,7 +129,7 @@ export default function ProductListing() {
               <tr key={product.id}>
                 <td className="dsc-tb576">{product.id}</td>
                 <td> <img className="dsc-product-listing-image"  src={product.imgUrl} alt={product.name} /> </td>
-                <td className="dsc-tb768">R$ {product.price.toFixed(2)}</td>
+                <td className="dsc-tb768">€{product.price.toFixed(2)}</td>
                 <td className="dsc-txt-left">{product.name}</td>
                 <td>  <img onClick={() => handleUpdateClick(product.id)} className="dsc-product-listing-btn" src={editIcon} alt="Editar" /></td>
                 <td> <img onClick={() => handleDeleteClick(product.id)} className="dsc-product-listing-btn" src={deleteIcon}  alt="Deletar"  />

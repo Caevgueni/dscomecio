@@ -1,10 +1,12 @@
 import QueryString from "qs";
 import type { AccessTokenPayloadDTO, CredentialsDTO, RoleEnum } from "../models/auth";
 import { CLIENT_ID, CLIENT_SECRET } from "../utils/system";
-import type { AxiosProxyConfig } from "axios";
+
+
 import { requestBackend } from "../utils/request";
 import * as accessTokenRepository from "../localstorage/access-token-repository";
 import jwtDecode from "jwt-decode";
+import type { AxiosRequestConfig } from "axios";
 
 export function loginRequest(loginData: CredentialsDTO) {
   const headers = {
@@ -17,7 +19,7 @@ export function loginRequest(loginData: CredentialsDTO) {
     grant_type: "password",
   });
 
-  const config: AxiosProxyConfig = {
+  const config: AxiosRequestConfig = {
     
     method:"POST",
     url: "/oauth/token",
